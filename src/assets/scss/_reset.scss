@@ -1,0 +1,36 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  @include relative;
+  min-height: 100%;
+  // margin-bottom: -292px;
+  font-family: '나눔고딕';
+
+}
+
+ul,
+ol {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+dl {
+  margin: 0;
+}
+
+dd {
+  margin-left: 0;
+}

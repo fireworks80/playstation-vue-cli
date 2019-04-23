@@ -1,0 +1,62 @@
+@mixin debug($color: red) {
+  outline: 1px dashed $color;
+}
+
+@mixin position($type, $top: null, $right: null, $bottom: null, $left: null) {
+  position: $type;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin absolute($args...) {
+  @include position(absolute, $args...);
+}
+
+@mixin relative($args...) {
+  @include position(relative, $args...);
+}
+
+@mixin fixed($args...) {
+  @include position(fixed, $args...);
+}
+
+@mixin size($w: null, $h: null) {
+  width: $w;
+  height: $h;
+}
+
+@mixin clearfix() {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin a11y() {
+  @include absolute;
+  @include size(1px);
+  overflow: hidden;
+  font-size: 1px;
+  opacity: 0;
+}
+
+@mixin size($w: null, $h: $w) {
+  width: $w;
+  height: $h;
+}
+
+@mixin respondTo($media) {
+  $bp-sm: 640px;
+  $bp-tablet: 768px;
+  $bp-sm-pc: 1024px;
+  @if ($media == handhelds) {
+    @media (max-width: $bp-sm) { @content; }
+  } @else if ($media == tablet) {
+    @media (min-width: $bp-sm + 1) and (max-width: $bp-tablet) { @content; }
+  } @else if ($media == small-pc) {
+    @media (min-width: $bp-tablet + 1) { @content; }
+  }
+}
