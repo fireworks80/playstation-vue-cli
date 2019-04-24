@@ -4,13 +4,11 @@
     <ul class="list">
       <li class="list__item" v-for="(title, idx) in titles" :key="idx">
         <a href class="prd">
-          <figure>
-            <img class="prd__img" :src="'/images/' + title.type + '/' + title.img" :alt="title.name">
-            <figcaption>
-              <em class="prd__title">{{title.name | textEllipsis}}</em>
-              <span class="prd__price">{{title.price | currency}}</span>
-            </figcaption>
-          </figure>
+          <img class="prd__img" :src="'/images/' + title.type + '/' + title.img" :alt="title.name">
+          <p>
+            <em class="prd__title">{{title.name | textEllipsis}}</em>
+            <span class="prd__price">{{title.price | currency}}</span>
+          </p>
         </a>
         <button @click="toggleLike(title)" class="like" type="button">
           <HeartOutline v-if="!title.like"></HeartOutline>
@@ -65,7 +63,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .list {
-
   &-wrap {
     flex: 1 1 80%;
   }
@@ -96,10 +93,6 @@ export default {
 
   &:hover {
     outline-color: #fff;
-  }
-
-  figure {
-    margin: 0;
   }
 
   &__img {
