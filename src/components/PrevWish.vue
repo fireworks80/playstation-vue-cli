@@ -1,21 +1,13 @@
 <template>
-  <article class="wish-list" :class="{'is-active': isActive}">
+  <article class="wish" :class="{'is-active': isActive}">
     <h2 class="a11y">위시리스트</h2>
-    <ul v-if="wishList.length">
-      <li v-for="(item, idx) in wishList" :key="idx">
-        <figure class="wish-item">
-          <img
-            class="wish-item__img"
-            :src="'/images/' + item.type + '/' + item.img"
-            alt="item.name"
-          >
-          <figcaption class="wish-item__desc">
-            <p>{{item.name}}</p>
-          </figcaption>
-        </figure>
+    <ul class="wish__list" v-if="wishList.length">
+      <li class="wish__item" v-for="(item, idx) in wishList" :key="idx">
+        <img class="wish__img" :src="'/images/' + item.type + '/' + item.img" alt="item.name">
+        <p>{{item.name}}</p>
       </li>
     </ul>
-    <p class="wish-list__no-title" v-else>선택한 상품이 없습니다.</p>
+    <p class="wish__no-content" v-else>선택한 상품이 없습니다.</p>
   </article>
 </template>
 <script>
@@ -30,7 +22,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.wish-list {
+.wish {
   @include absolute($top: 40px, $left: 50%);
   @include size(90%, null);
   transform: translateX(-50%);
@@ -42,7 +34,7 @@ export default {
     display: block;
   }
 
-  ul {
+  &__list {
     max-height: 400px;
     overflow: {
       y: auto;
@@ -50,34 +42,29 @@ export default {
     }
   }
 
-  li:nth-child(n + 2) figure {
-    border-top: 1px solid #ddd;
-  }
-
-  figure {
-    margin: 0;
-    padding-right: 10px;
+  &__item {
     display: flex;
     align-items: center;
+
+    &:nth-child(n + 2) {
+      border-top: 1px solid #ddd;
+    }
   }
 
-  img {
-    transform: scale(.7);
+  &__img {
+    transform: scale(0.7);
   }
 
-  &__no-title {
+  &__no-content {
     text-align: center;
   }
 }
 
 @media (min-width: 769px) {
-  .wish-list {
+  .wish {
     @include size(600px, null);
     top: 40px;
-    // left: -410px;
-    // transform: translateX(0);
   }
 }
-
 </style>
 
