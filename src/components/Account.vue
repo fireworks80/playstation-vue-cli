@@ -1,8 +1,8 @@
 <template>
   <div class="account">
+    <h2 class="a11y">사용자 패널</h2>
     <!-- l-wrap -->
     <div class="l-wrap">
-      <h1 class="a11y">Playstation Store</h1>
       <a href="/">
         <img src="../assets/svg/store-logo.svg" alt="playstation store">
       </a>

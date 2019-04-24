@@ -14,7 +14,7 @@
       "price": 108000,
       "type": "game",
       "img": "catherine.jpg",
-      "like": true
+      "like": false
     },
     {
       "id": 3,
@@ -94,7 +94,7 @@
       "price": 66000,
       "type": "game",
       "img": "division2-standard.jpg",
-      "like": false
+      "like": true
     },
     {
       "id": 13,

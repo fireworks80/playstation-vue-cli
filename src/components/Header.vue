@@ -1,5 +1,6 @@
 <template>
   <header ref="header">
+    <h1 class="a11y">Playstation Store</h1>
     <p class="logo">
       <span class="l-wrap">
         <a class="logo__link" href="#">

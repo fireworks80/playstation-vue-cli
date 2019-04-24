@@ -1,21 +1,24 @@
 <template>
-  <ul class="list">
-    <li class="list__item" v-for="(title, idx) in titles" :key="idx">
-      <a href class="prd">
-        <figure>
-          <img class="prd__img" :src="'/images/' + title.type + '/' + title.img" :alt="title.name">
-          <figcaption>
-            <em class="prd__title">{{title.name | textEllipsis}}</em>
-            <span class="prd__price">{{title.price | currency}}</span>
-          </figcaption>
-        </figure>
-      </a>
-      <button @click="toggleLike(title)" class="like" type="button">
-        <HeartOutline v-if="!title.like"></HeartOutline>
-        <Heart v-else></Heart>
-      </button>
-    </li>
-  </ul>
+  <section class="list-wrap">
+    <h2 class="a11y">게임 목록</h2>
+    <ul class="list">
+      <li class="list__item" v-for="(title, idx) in titles" :key="idx">
+        <a href class="prd">
+          <figure>
+            <img class="prd__img" :src="'/images/' + title.type + '/' + title.img" :alt="title.name">
+            <figcaption>
+              <em class="prd__title">{{title.name | textEllipsis}}</em>
+              <span class="prd__price">{{title.price | currency}}</span>
+            </figcaption>
+          </figure>
+        </a>
+        <button @click="toggleLike(title)" class="like" type="button">
+          <HeartOutline v-if="!title.like"></HeartOutline>
+          <Heart v-else></Heart>
+        </button>
+      </li>
+    </ul>
+  </section>
 </template>
 <script>
 import HeartOutline from 'vue-material-design-icons/HeartOutline.vue'
@@ -62,7 +65,10 @@ export default {
 </script>
 <style lang="scss" scoped>
 .list {
-  flex: 1 1 80%;
+
+  &-wrap {
+    flex: 1 1 80%;
+  }
   display: flex;
   flex-wrap: wrap;
   padding-top: 24px;
@@ -142,7 +148,9 @@ export default {
 
 @include respondTo(tablet) {
   .list {
-    max-width: 90%;
+    &-wrap {
+      max-width: 90%;
+    }
 
     &__item {
       width: 25%;
